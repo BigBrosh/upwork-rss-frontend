@@ -4,14 +4,10 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from "./theme";
+import { skillsSelectController } from "../../controllers/skillsSelectController";
 
 const SkillsSelect = ({ skills, filter }) => {
-  const [selectedSkills, selectSkills] = React.useState([]);
-
-  useEffect(() => {
-    const rowId = String(filter.columnDef.tableData.id);
-    filter.onFilterChanged(rowId, selectedSkills);
-  }, [selectedSkills]);
+  const { selectedSkills, selectSkills } = skillsSelectController(filter);
 
   return (
     <ThemeProvider theme={theme}>
